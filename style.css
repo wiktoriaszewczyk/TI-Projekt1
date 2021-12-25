@@ -27,6 +27,7 @@ main{
     margin: auto;
     /* padding-top: 100px /* bo header zakrywa*/
     padding: 110px 10px 0px 10px; 
+    /* min-width: 750px; */
     /*top right bottom left */
 }
 #animation{

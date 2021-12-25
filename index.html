@@ -16,26 +16,29 @@
         <article id="animation">
             <canvas id="canvasForAnimation">Animation</canvas>
             <div id="formData">
-                <!-- <form id="data" action="#"> -->
-                    <table>
+                <table>
+                    <form id="data"></form>
                         <tr>
                             <td><label for="y0">Wysokość początkowa</label></td>
-                            <td><input type="number" id="y0" name="y0"/></td>
+                            <td><input type="number" value="350" id="y0" name="y0" class="animationData"/></td>
                         </tr>
                         <tr>
                             <td><label for="v0">Prędkość początkowa</label></td>
-                            <td><input type="number" id="v0" name="v0"/></td>
+                            <td><input type="number" id="v0" name="v0" class="animationData"/></td>
                         </tr>
                         <tr>
                             <td><label for="alfa">Kąt</label></td>
-                            <td><input type="number" id="alfa" name="alfa"/></td>
+                            <td><input type="number" id="alfa" name="alfa" class="animationData"/></td>
                         </tr>
-                        <tr>
-                            <td><button onclick="startAnimation()">Start</button></td>
-                            <td><button onclick="stopAnimation()">Stop</button></td>
-                        </tr>
-                    </table>
-                <!-- </form> -->
+                    </form>
+                    <tr>
+                        <td><button onclick="startAnimation()">Start</button></td>
+                        <td>
+                            <button onclick="stopAnimation()">Stop</button>
+                            <button onclick="resetAnimation()">Pozycja poczatkowa</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </article>
         <br />

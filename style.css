@@ -1,6 +1,7 @@
 body{
     background-color: #353535;
     color: #FFF;
+    margin: 0;
 }
 header{
     position: fixed;
@@ -12,7 +13,7 @@ header{
     /* color: #000000; */
 }
 footer{
-    position: fixed;
+    /* position: fixed; */
     left: 0;
     bottom: 0;
     padding: 2ch;
@@ -24,12 +25,20 @@ footer{
 }
 main{
     margin: auto;
-    padding-top: 100px /* bo header zakrywa*/
-    /* padding: 100px 10px 0px 10px;  */
+    /* padding-top: 100px /* bo header zakrywa*/
+    padding: 110px 10px 0px 10px; 
     /*top right bottom left */
+}
+#animation{
+    /* text-align: center; */
 }
 #canvasForAnimation{
     background-color: white;
+}
+#formData{
+    display: block;
+    background-color: #3C6E71;
+    float: right;
 }
 
 

@@ -13,11 +13,32 @@
     </header>
 
     <main>
-        <canvas id="canvasForAnimation" width="300" height="200">
-            Animation
-        </canvas>
-        <br /><br />
-
+        <article id="animation">
+            <canvas id="canvasForAnimation">Animation</canvas>
+            <div id="formData">
+                <!-- <form id="data" action="#"> -->
+                    <table>
+                        <tr>
+                            <td><label for="y0">Wysokość początkowa</label></td>
+                            <td><input type="number" id="y0" name="y0"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="v0">Prędkość początkowa</label></td>
+                            <td><input type="number" id="v0" name="v0"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="alfa">Kąt</label></td>
+                            <td><input type="number" id="alfa" name="alfa"/></td>
+                        </tr>
+                        <tr>
+                            <td><button onclick="startAnimation()">Start</button></td>
+                            <td><button onclick="stopAnimation()">Stop</button></td>
+                        </tr>
+                    </table>
+                <!-- </form> -->
+            </div>
+        </article>
+        <br />
         <section></section>
         <article>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rite najal nil vyl licoeto, ne lab dadafa cal banade boloe vil he. Lis, ly laboebybib macymyt di, doesemas mele, nif piciquib li balefide, te fila. Le lih, toebe, le diboma den lejynequi mila, ledudij joel re, moj febe mevevabevy. Lyn, tabe leje med cifuse damaloe diqua debobi re, colefi fili beleroe lamyroec.<br />
@@ -67,5 +88,6 @@ Bam fedi soero pol fad soe letav queredoeloesi, mys davedel ninamy vij. Mo, bac 
         Projekt z przedmiotu Techniki Internetowe - Wiktoria Szewczyk
         <!-- back to top link-->
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>

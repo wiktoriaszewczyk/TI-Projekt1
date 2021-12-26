@@ -1,2 +1,16 @@
+1. Rzut pionowy
+    1.1 w górę
+    2.2 w dół
 
+2. Rzut poziomy
+
+3. Rzut ukośny
+
+Nie uwzględniane są opory ruchów.
+
+1.1 
+    Nadajemy ciału prędkość początkową do góry.
+
+2.2
+    Bez prędkości początkowej lub z prędkością początkową skierowaną w dół.
 

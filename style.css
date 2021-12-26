@@ -1,50 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+
 body{
     background-color: #353535;
     color: #FFF;
     margin: 0;
 }
 header{
-    position: fixed;
-    left: 0;
-    top: 0;
-    padding: 1ch;
     width: 100%;
+    padding: 30px 0;
     background-color: #284B63;
-    /* color: #000000; */
+    border-bottom: 2px dashed #fff;
 }
-footer{
-    /* position: fixed; */
-    left: 0;
-    bottom: 0;
-    padding: 2ch;
+#headerText{
+    width: 400px;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Karla', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+}
+nav{
     width: 100%;
+    padding: 10px 0;
+    background-color: #3C6E71;
+    height: 30px;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.sticky{
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.sticky + main {
+    padding-top: 50px;
+}
+
+main{
+    width: 90%;
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
+    /* font-family: 'Roboto Slab', serif; */
+    /* border: 1px burlywood solid; */
+}
+
+footer{
+    margin-top: 20px;
+    padding: 10px 10px;
     border-top: solid 2px #3C6E71;
     background-color: #353535;
     color: #3C6E71;
+}
 
+#animationHeader{
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Karla', sans-serif;
 }
-main{
-    margin: auto;
-    /* padding-top: 100px /* bo header zakrywa*/
-    padding: 110px 10px 0px 10px; 
-    /* min-width: 750px; */
-    /*top right bottom left */
-}
+
 #animation{
-    /* text-align: center; */
+    height: 420px;
+    padding: 20px;
+    background-color: white;
+    min-width: 1100px;
 }
+/* 
 #canvasForAnimation{
     background-color: white;
-}
+} */
+
 #formData{
-    display: block;
-    background-color: #3C6E71;
     float: right;
+    width: 400px;
+    border: 1px burlywood solid;
+    color: #000;
+}
+#formData button{
+    border: 1px solid #AAA;
+    border-radius: 4px;
+}
+
+.animationData{
+    width: 60px;
+    border: 1px solid #AAA;
+    border-radius: 4px;
 }
 
 
 
 
+/*clear: both*/
 /*
     #082D0F
     #9DC5BB

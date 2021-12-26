@@ -30,7 +30,7 @@ var y;
 var dx;
 var dy;
 var ddx = 0;
-var ddy = -10 ; // przyspieszenie ziemskie
+var ddy = -9.81 ; // przyspieszenie ziemskie
 
 // tor lotu
 var arrX = [];
@@ -40,6 +40,11 @@ document.getElementById("x0").value = x0;
 document.getElementById("y0").value = y0;
 document.getElementById("v0").value = v0;
 document.getElementById("alfa").value = alfa;
+
+
+/*
+    wszystko na osiach mniejsze -> potem w ToCanvas pomnożyć ? s
+*/
 
 // x, y - względem osi
 // funkcje do zamiany x, y na względem canvas
@@ -233,3 +238,16 @@ drawCircle();
 // c.lineTo(canvasWidth - 10,canvasHeight - 10);
 // c.strokeStyle = "#000";
 // c.stroke();
+
+
+// sticky nav
+
+var nav = document.getElementsByTagName("nav");
+var sticky = nav[0].offsetTop;
+
+window.onscroll = function(){
+    if(window.pageYOffset >= sticky)
+        nav[0].classList.add("sticky");
+    else
+        nav[0].classList.remove("sticky");
+};

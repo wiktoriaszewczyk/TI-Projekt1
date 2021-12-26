@@ -8,55 +8,67 @@
 </head>
 <body>
     <header>
-        <h1>Rzuty w polu grawitacyjnym</h1>
-        <nav></nav>
+        <div id="headerText">Rzuty w polu grawitacyjnym</div>
     </header>
 
-    <main>
-        <article id="animation">
-            <h3>Animacja dowolnego rzutu</h3>
-            <canvas id="canvasForAnimation">Animation</canvas>
-            <div id="formData">
-                <table>
-                    <form id="data"></form>
-                        <tr>
-                            <td><label for="x0">Położenie początkowe X</label></td>
-                            <td><input type="number" id="x0" name="x0" class="animationData"/></td>
-                        </tr>
-                        <tr>
-                            <td><label for="y0">Położenie początkowe Y</label></td>
-                            <td><input type="number" id="y0" name="y0" class="animationData"/></td>
-                        </tr>
-                        <tr>
-                            <td><label for="v0">Prędkość początkowa</label></td>
-                            <td><input type="number" id="v0" name="v0" class="animationData"/></td>
-                        </tr>
-                        <tr>
-                            <td><label for="alfa">Kąt</label></td>
-                            <td><input type="number" id="alfa" name="alfa" class="animationData"/></td>
-                        </tr>
-                    </form>
-                    <tr>
-                        <td><button onclick="startAnimation()">Start</button></td>
-                        <td>
-                            <button onclick="stopAnimation()">Stop</button>
-                            <button onclick="resetAnimation()">Pozycja poczatkowa</button>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </article>
-        <br />
-        <section></section>
+    <nav>
+        <!-- <ul>
+            <li>aaaaa</li>
+            <li>bbbbb</li>
+            <li>ddd</li>
+            <li>cccc</li>
+        </ul> -->
+    </nav>
+
+    <main>        
+        <!-- <section></section> -->
         <article>
             <video width="320" height="240" controls>
                 <source src="img/video_rzuty.mp4" type="video/mp4">
             </video>
-            <!-- <video width="320" height="240" controls>
-                <source src="files/videoSolarSystem.mp4" type="video/mp4">
-              </video> -->
         </article>
-        <aside></aside> 
+
+        <article>
+            <img src="https://latex.codecogs.com/svg.image?x(t)&space;=&space;x_0&space;&plus;&space;v_{x0}\cdot&space;t&space;&plus;&space;\frac{a_{x0}&space;\cdot&space;t}{2}" title="x(t) = x_0 + v_{x0}\cdot t + \frac{a_{x0} \cdot t}{2}" />
+        </article>
+
+        <!-- <aside></aside>  -->
+
+        <p id="animationHeader">Animacja dowolnego rzutu</p>
+        <article id="animation">
+            <canvas id="canvasForAnimation">Animation</canvas>
+            <table id="formData">
+                <form id="data"></form>
+                    <tr>
+                        <td colspan="2">Wartości początkowe</td>
+                    </tr>
+                    <tr>
+                        <td><label for="x0">x<sub>0</sub></label></td>
+                        <td><input type="number" id="x0" name="x0" class="animationData"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="y0">y<sub>0</sub></label></td>
+                        <td><input type="number" id="y0" name="y0" class="animationData"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="v0">v<sub>0</sub></label></td>
+                        <td><input type="number" id="v0" name="v0" class="animationData"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="alfa">&alpha;</label></td>
+                        <td><input type="number" id="alfa" name="alfa" class="animationData"/></td>
+                    </tr>
+                </form>
+                <tr>
+                    <td><button onclick="startAnimation()">Start</button></td>
+                    <td>
+                        <button onclick="stopAnimation()">Stop</button>
+                        <button onclick="resetAnimation()">Pozycja poczatkowa</button>
+                    </td>
+                </tr>
+            </table>
+            <div style="clear: both;"></div>
+        </article>
     </main>
 
     <footer>

@@ -41,44 +41,55 @@ nav{
 main{
     width: 90%;
     text-align: justify;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px auto;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* margin-top: 20px; */
     /* font-family: 'Roboto Slab', serif; */
     /* border: 1px burlywood solid; */
 }
 
 footer{
-    margin-top: 20px;
+    /* margin-top: 20px; */
     padding: 10px 10px;
     border-top: solid 2px #3C6E71;
     background-color: #353535;
     color: #3C6E71;
 }
 
-#animationHeader{
+.headers{
     font-size: 20px;
     text-align: center;
     font-family: 'Karla', sans-serif;
 }
 
 #animation{
-    height: 420px;
-    padding: 20px;
     background-color: white;
-    min-width: 1100px;
+    /* height: 420px; */
+    /* padding: 20px; */
+    /* min-width: 1100px; */
 }
-/* 
+ 
 #canvasForAnimation{
     background-color: white;
-} */
+    float: left;
+    width: 60%;
+
+}
 
 #formData{
     float: right;
-    width: 400px;
-    border: 1px burlywood solid;
+    width: 40%;
+    /* margin: auto; */
+    background-color: #3C6E71;
     color: #000;
 }
-#formData button{
+
+/* #tableFormData{
+    width: 250px;
+} */
+
+#tableFormData button{
     border: 1px solid #AAA;
     border-radius: 4px;
 }
@@ -86,10 +97,90 @@ footer{
 .animationData{
     width: 60px;
     border: 1px solid #AAA;
-    border-radius: 4px;
 }
 
 
+#allThrows{
+    margin: 30px 0;
+    height: 1000px;
+}
+
+#chooseThrow{
+    float: left;
+    width: 10%;
+    height: 100%;
+    background-color: #284B63;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+#chooseThrow ul{
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+}
+
+#chooseThrow li{
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px black solid;
+    cursor: pointer;
+}
+
+#chooseThrow li:hover{
+    background-color: #3C6E71;
+}
+
+.rzut{
+    float: right;
+    width: 90%;
+    height: 100%;
+    background-color: #FFF;
+    color: #000;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.ThrowImg{
+    width: 40%;
+    display: block;
+    margin: 0 auto;
+}
+
+#VectorElementsAll{
+    background-color: #FFF;
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 4px;
+    /* height: 450px; */
+}
+
+#vectorElementsImg{
+    float: left;
+    height: auto;
+    width: 40%;
+    margin: auto 0;
+}
+
+#vectorElements{
+    float: right;
+    width: 35%;
+    color: #000;
+}
+
+video{
+    width: 400px;
+    display: block;
+    margin: 0 auto;
+}
+
+
+/* @media (max-width: 1100px){
+    #animation{
+        background-color: red;
+    }
+} */
 
 
 /*clear: both*/

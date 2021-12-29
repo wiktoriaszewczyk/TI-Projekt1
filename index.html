@@ -5,6 +5,7 @@
     <meta name="author" content="Wiktoria Szewczyk">
     <link rel="StyleSheet" href="style.css" type="text/css">
     <title>Projekt1 Wiktoria Szewczyk</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <header>
@@ -13,60 +14,249 @@
 
     <nav>
         <!-- <ul>
-            <li>aaaaa</li>
-            <li>bbbbb</li>
-            <li>ddd</li>
-            <li>cccc</li>
+            <li>Wstęp</li>
+            <li>Wzory</li>
+            <li></li>
+            <li>Animacja</li>
         </ul> -->
     </nav>
 
-    <main>        
-        <!-- <section></section> -->
+    <main>
+        
         <article>
-            <video width="320" height="240" controls>
-                <source src="img/video_rzuty.mp4" type="video/mp4">
-            </video>
+            <p id="introHeader" class="headers">Wstęp</p>
+            Strzał z armaty, rzut kamieniem, kopnięcie piłki, przypadkowe upuszczenie czegoś
+             - to przykładowe ruchy, które można nazwać rzutami. 
+            Poniżej zostaną omówione rzuty w jednorodnym polu grawitacyjnym. 
+            Wyróżnione zostaną trzy typy rzutów: pionowy, poziomy i ukośny.
+            Przyspieszenie grawitacyjne oznaczane jest literą g i na ziemi wynosi:
+            $$ {g = 9.81\frac{m}{s^{2}}.} $$
+            Dodatkowo podczas obliczeń stosuje się następujące przybliżenia:
+            <ul>
+                <li>pomija się opory ruchu,</li>
+                <li>zakłada się, że osiągnięta przez obiekt wysokość jest znacznie mniejsza niż promień ziemi, więc pole grawitacyjne jest jednorodne</li>
+                <li>pomija się efekty związane z ruchem obrotowym Ziemi.</li>
+            </ul>
         </article>
 
-        <article>
-            <img src="https://latex.codecogs.com/svg.image?x(t)&space;=&space;x_0&space;&plus;&space;v_{x0}\cdot&space;t&space;&plus;&space;\frac{a_{x0}&space;\cdot&space;t}{2}" title="x(t) = x_0 + v_{x0}\cdot t + \frac{a_{x0} \cdot t}{2}" />
-        </article>
+        <div id="allThrows">
+            <div id="chooseThrow">
+                <ul>
+                    <li id="rzutPionowy" onclick="selectThrow(1)">Rzut pionowy</li>
+                    <ul>
+                        <li id="rzutPionowySpadekSwobodny" class="rzutyPionowe" onclick="selectThrow(1)">Spadek swobodny</li>
+                        <li id="rzutPionowyGora" class="rzutyPionowe" onclick="selectThrow(2)">W górę</li>
+                        <li id="rzutPionowyDol" class="rzutyPionowe" onclick="selectThrow(3)">W dół</li>
+                    </ul>
+                    <li id="rzutPoziomy" onclick="selectThrow(4)">Rzut poziomy</li>
+                    <li id="rzutUkosny"  onclick="selectThrow(5)">Rzut ukośny</li>
+                </ul>
+            </div>
+            <div id="rzutPionowySpadekSwobodnyInfo" class="rzut" style="display: block;">
+                <p class="throwHeader">Spadek swobodny</p>
+                <img src="img/Rzut pionowy - spadek swobodny.png" alt="Rysunek poglądowy spadku swobodnego" class="ThrowImg">
+                <article class="formulas">
+                    <p>
+                        Ruch odbywa się wyłącznie pod wpływem siły grawitacji. 
+                        Rozpoczyna się od spoczynku na wysokości \( h_{0} \). 
+                        Ciało porusza się ruchem jednostajnie przyśpieszonym po linii prostej w kierunku osi Y.
+                    </p>
+                    
+                    <div>
+                        $$ y(t) = h_0 - \frac{a_y t^2}{2} $$
+                        $$ v_y(t) = 0 $$
+                        $$ a_y = g $$
+                    </div>
 
-        <!-- <aside></aside>  -->
+                    <div>
+                        Maksymalna wysokość \(h_{max}\), zasięg (położenie końcowe na osi X) \(x_k\) oraz czas spadku \(t_k\):
+                        $$ h_{max} = h_0$$
+                        $$ x_k = x_0 $$
+                        $$ t_k = \sqrt{\frac{2 h_0}{g}} $$
+                    </div>
+                    
+                </article>
+            </div>
+            <div id="rzutPionowyGoraInfo" class="rzut" style="display: none;">
+                <p class="throwHeader">Rzut pionowy w górę</p>
+                <img src="img/Rzut pionowy - w gore.png" alt="Rysunek poglądowy rzutu pionowego w górę" class="ThrowImg">
+                <article class="formulas">
+                    <p>
+                        Jedyną siłą działającą na ciało jest siła ciężkości. Działa ona w kiedunku zgodnym z ruchem ciała.
+                        Ciało początkowo znajduje się na wysokości \( h_0 \). 
+                        Dodatkowo pojawia się prędkość początkowa skierowana zgodnie z osią Y. 
+                        Dzięki temu ciało najpierw porusza się ruchem jednostajnie opóźnionym w górę, 
+                        jednak gdy osiągnie maksymalną wysokość spada ruchem jednostajnie przyśpieszonym. 
+                    </p>
+                
+                    <div>
+                        $$ {y(t)} = h_0 + v_0 t - \frac{a_y t^2}{2}$$
+                        $$ {v_y(t) = v_0 - a_y t}$$
+                        $$ {a_y = g} $$
+                    </div>
 
-        <p id="animationHeader">Animacja dowolnego rzutu</p>
+                    <div>
+                        Maksymalna wysokość \(h_{max}\), zasięg (położenie końcowe na osi X) \(x_k\) oraz czas spadku \(t_k\):
+                        $$ h_{max} = h_0 + \frac{v_0^2}{2  g } $$
+                        $$ x_k = x_0 $$
+                        $$ t_k = \frac{v_0 + \sqrt{v_0^2 + 2 g  h_0}}{g} $$
+                    </div>
+                </article>
+            </div>
+            <div id="rzutPionowyDolInfo" class="rzut" style="display: none;">
+                <p class="throwHeader">Rzut pionowy w dół</p>
+                <img src="img/Rzut pionowy - w dol.png" alt="Rysunek poglądowy rzutu pionowego w dół" class="ThrowImg">
+                <article class="formulas">
+                    <p>
+                        Jedyną siłą działającą na ciało jest siła ciężkości. Działa ona w kiedunku zgodnym z ruchem ciała.
+                        Ciało początkowo znajduje się na wysokości \( h_{0} \). 
+                        Rzut pionowy w dół różni się od spadku swobodnego tym, że na początku ruchu została nadana ciału prędkość początkowa \( v_0 \). 
+                        Ciało porusza się więc ruchem jednostajnie przyśpieszonym z prędkością początkową.
+                    </p>
+
+                    <div>
+                        $$ {y(t)} = h_0 - v_0 t - \frac{a_y t^2}{2}$$
+                        $$ {v_y(t) = - v_0 - a_y t}$$
+                        $$ {a_y = g} $$
+                    </div>
+
+                    <div>
+                        Maksymalna wysokość \(h_{max}\), zasięg (położenie końcowe na osi X) \(x_k\) oraz czas spadku \(t_k\):
+                        $$ h_{max} = h_0 $$
+                        $$ x_k = x_0 $$
+                        $$ t_k = \frac{- v_0 + \sqrt{v_0^2 + 2 g h_0}}{g} $$
+                    </div>
+                </article>
+            </div>
+            <div id="rzutPoziomyInfo" class="rzut" style="display: none;">
+                <p class="throwHeader">Rzut poziomy</p>
+                <img src="img/Rzut poziomy.png" alt="Rysunek poglądowy rzutu poziomego" class="ThrowImg">
+                <article class="formulas">
+                    <p>
+                        Rzut poziomy można rozważać jako ruch składający się z rzutu pionowego (spadku swobodnego) i ruchu jednostajnego prostoliniowego
+                        Ciało początkowo znajduje się na wysokości \( h_{0} \) oraz została mu nadana prędkość początkowa w kierunku osi X. 
+                        Ciało porusza się po paraboli.
+                    </p>
+
+                    <div>
+                        $$ {y(t)} = h_0 - \frac{a_y t^2}{2}$$
+                        $$ {v_y(t)} = 0$$
+                        $$ {a_y = g} $$
+                    </div>
+
+                    <div>
+                        $$ {x(t)} = x_0 \pm v_0 t$$
+                        $$ {v_x(t)} = \pm v_0$$
+                        $$ {a_x = 0} $$
+                    </div>
+
+                    <div>
+                        Maksymalna wysokość \(h_{max}\), zasięg (położenie końcowe na osi X) \(x_k\) oraz czas spadku \(t_k\):
+                        $$ h_{max} = h_0$$
+                        $$ x_k = x_0 \pm v_0 t_k $$
+                        $$ t_k = \sqrt{\frac{2 h_0}{g}} $$
+                    </div>
+                </article>
+            </div>
+            <div id="rzutUkosnyInfo" class="rzut" style="display: none;">
+                <p class="throwHeader">Rzut ukośny</p>
+                <img src="img/Rzut ukosny.png" alt="Rysunek poglądowy rzutu ukośnego" class="ThrowImg">
+                <article class="formulas">
+                    <p>
+                        Rzut ukośny można rozważać jako ruch składający się z rzutu pionowego i ruchu jednostajnego prostoliniowego
+                        Ciało początkowo znajduje się na wysokości \( h_{0} \) oraz została mu nadana prędkość początkowa w kierunku ukośnym do pola grawitacyjnego. 
+                        Kąt nachylenia prędkości początkowej do osi X oznaczamy jako &alpha;. 
+                        Ciało porusza się po paraboli.
+                    </p>
+
+                    <div>
+                        $$ {y(t)} = h_0 \pm v_{y0} t - \frac{a_y t^2}{2}$$
+                        $$ {v_y(t) = \pm v_{y0} - a_y t}$$
+                        $$ {a_y = g} $$
+                    </div>
+
+                    <div> 
+                        $$ {x(t)} = x_0 \pm v_{x0} t$$
+                        $$ {v_x(t)} = x_0 \pm v_{x0}$$
+                        $$ {a_x = 0} $$
+                    </div>
+
+                    <div>
+                        Maksymalna wysokość \(h_{max}\), zasięg (położenie końcowe na osi X) \(x_k\) oraz czas spadku \(t_k\):
+                        $$ h_{max} = \begin{cases}
+                        h_0 + \frac{{v_{y0}}^2}{2 \cdot g }, & \alpha \in (0,\pi) \\
+                        h_0, & \alpha \in [\pi,2\pi]
+                        \end{cases} $$
+                        $$ x_k = \pm v_{x0} t_k $$
+                        $$ t_k = \begin{cases}
+                        \frac{v_{y0} + \sqrt{{v_{y0}}^2 + 2 g  h_0}}{g}, & \alpha \in (0,\pi) \\
+                        \frac{- v_{y0} + \sqrt{{v_{y0}}^2 + 2 g h_0}}{g}, & \alpha \in [\pi,2\pi]
+                        \end{cases} $$
+                    </div>
+
+                </article>
+            </div>
+            <div style="clear: both;""></div>
+        </div>
+
+        <video controls>
+            <source src="img/video_rzuty.mp4" type="video/mp4">
+        </video>
+
+        <p id="vectorElementHeader" class="headers">Rozkład wektora prędkości początkowej na składowe</p>
+        <div id="VectorElementsAll">
+            <img src="img/Predkosci skladowe v0.png" id="vectorElementsImg">
+            <article id="vectorElements">
+                $$ v_{x0} = v_0 cos(\alpha) $$
+                $$ v_{y0} = v_0 cos(\alpha) $$
+            </article>
+            <div style="clear: both;"></div>
+        </div>
+
+        <!-- animacja -->
+        <p id="animationHeader" class="headers">Animacja dowolnego rzutu</p>
         <article id="animation">
             <canvas id="canvasForAnimation">Animation</canvas>
-            <table id="formData">
-                <form id="data"></form>
+            <div id="formData">
+                <table id="tableFormData" border>
+                    <!-- opisać jednostki
+                        ograniczenia na formularzu
+                        kąt od 0 do 360
+                    -->
+                    <form id="data"></form>
+                        <tr>
+                            <td colspan="2">Wartości początkowe</td>
+                        </tr>
+                        <tr>
+                            <td><label for="x0">x<sub>0</sub></label></td>
+                            <td><input type="number" id="x0" name="x0" class="animationData"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="y0">y<sub>0</sub></label></td>
+                            <td><input type="number" id="y0" name="y0" class="animationData"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="v0">v<sub>0</sub></label></td>
+                            <td><input type="number" id="v0" name="v0" class="animationData"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="alfa">&alpha;</label></td>
+                            <td><input type="number" id="alfa" name="alfa" class="animationData"/></td>
+                        </tr>
+                    </form>
                     <tr>
-                        <td colspan="2">Wartości początkowe</td>
+                        <td><button onclick="startAnimation()">Start</button></td>
+                        <td>
+                            <button onclick="stopAnimation()">Stop</button>
+                            <button onclick="resetAnimation()">Pozycja poczatkowa</button>
+                        </td>
                     </tr>
-                    <tr>
-                        <td><label for="x0">x<sub>0</sub></label></td>
-                        <td><input type="number" id="x0" name="x0" class="animationData"/></td>
-                    </tr>
-                    <tr>
-                        <td><label for="y0">y<sub>0</sub></label></td>
-                        <td><input type="number" id="y0" name="y0" class="animationData"/></td>
-                    </tr>
-                    <tr>
-                        <td><label for="v0">v<sub>0</sub></label></td>
-                        <td><input type="number" id="v0" name="v0" class="animationData"/></td>
-                    </tr>
-                    <tr>
-                        <td><label for="alfa">&alpha;</label></td>
-                        <td><input type="number" id="alfa" name="alfa" class="animationData"/></td>
-                    </tr>
-                </form>
-                <tr>
-                    <td><button onclick="startAnimation()">Start</button></td>
-                    <td>
-                        <button onclick="stopAnimation()">Stop</button>
-                        <button onclick="resetAnimation()">Pozycja poczatkowa</button>
-                    </td>
-                </tr>
-            </table>
+                </table>
+                <!-- innerHTML - czas spadku, zasięg , max wysokość-->
+                <p id="hmax">Wysokość maksymalna = </p>
+                <p id="xk">Zasięg = </p>
+                <p id="tk">Czas spadku = </p>
+            </div>
             <div style="clear: both;"></div>
         </article>
     </main>

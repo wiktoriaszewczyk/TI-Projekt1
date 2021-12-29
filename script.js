@@ -20,7 +20,7 @@ var t0 = 0;
 var x0 = 50;
 var y0 = 100;
 var v0 = 40;
-var alfa = 45;
+var alfa = 45 * (Math.PI/180.0);
 var dx0 = v0 * Math.cos(alfa);
 var dy0 = v0 * Math.sin(alfa);
 
@@ -30,7 +30,7 @@ var y;
 var dx;
 var dy;
 var ddx = 0;
-var ddy = -9.81 ; // przyspieszenie ziemskie
+var ddy = -10 ; // przyspieszenie ziemskie
 
 // tor lotu
 var arrX = [];
@@ -39,8 +39,36 @@ var arrY = [];
 document.getElementById("x0").value = x0;
 document.getElementById("y0").value = y0;
 document.getElementById("v0").value = v0;
-document.getElementById("alfa").value = alfa;
+document.getElementById("alfa").value = 45;
 
+// obliczenia wysokości maksymalnej, zasięgu i czasu spadku + wypisanie ich
+function hmax_xk_tk(){
+    hmax_text = document.getElementById("hmax");
+    xk_text = document.getElementById("xk");
+    tk_text = document.getElementById("tk");
+
+    // naprawić !
+    if(alfa < (2 * Math.PI) && alfa > Math.PI){
+        hmax = y0;
+        tk = (-dy0 + Math.sqrt((dy0 * dy0) + (2.0 * ddy * y0))) / ddy;
+    }
+    else{
+        hmax = y0 + ((dy0 * dy0) / (2.0 * ddy));
+        tk = (dy0 + Math.sqrt((dy0 * dy0) + (2.0 * ddy * y0))) / ddy;
+    }
+    if(alfa < (3.0/2 * Math.PI) && alfa > (1.0/2 * Math.PI)){
+        xk = - dx0 * tk;
+    }
+    else{
+        xk = dx0 * tk;
+    }
+
+    hmax_text.innerHTML = "Wysokość maksymalna = "+hmax;
+    xk_text.innerHTML = "Zasięg = "+xk;
+    tk_text.innerHTML = "Czas spadku = "+tk+"s";
+
+}
+hmax_xk_tk();
 
 /*
     wszystko na osiach mniejsze -> potem w ToCanvas pomnożyć ? s
@@ -165,6 +193,7 @@ function changeData(){
     dy0 = v * Math.sin(alfa);
 
     setData();
+    hmax_xk_tk();
 }
 
 // zmiana danych po wpisaniu w arkusz
@@ -228,20 +257,7 @@ drawCircle();
 //drawVectorv0()
 
 
-// rectangle
-// c.fillRect(0,0,60,60);
-
-// line
-// c.beginPath(); 
-// c.moveTo(10,10);
-// c.lineTo(10,canvasHeight - 10);
-// c.lineTo(canvasWidth - 10,canvasHeight - 10);
-// c.strokeStyle = "#000";
-// c.stroke();
-
-
 // sticky nav
-
 var nav = document.getElementsByTagName("nav");
 var sticky = nav[0].offsetTop;
 
@@ -251,3 +267,39 @@ window.onscroll = function(){
     else
         nav[0].classList.remove("sticky");
 };
+
+
+// allThrows display none, block;
+
+function selectThrow(n){
+    t1 = document.getElementById("rzutPionowySpadekSwobodnyInfo");
+    t2 = document.getElementById("rzutPionowyGoraInfo");
+    t3 = document.getElementById("rzutPionowyDolInfo");
+    t4 = document.getElementById("rzutPoziomyInfo");
+    t5 = document.getElementById("rzutUkosnyInfo");
+    // t_1 = document.getElementById("rzutPionowy");
+    // t_2 = document.getElementById("rzutPoziomy");
+    // t_3 = document.getElementById("rzutUkosny");
+    t1.style.display = "none";
+    t2.style.display = "none";
+    t3.style.display = "none";
+    t4.style.display = "none";
+    t5.style.display = "none";
+    switch(n){
+        case 1:
+            t1.style.display = "block";
+            break;
+        case 2:
+            t2.style.display = "block";
+            break;
+        case 3:
+            t3.style.display = "block";
+            break;
+        case 4:
+            t4.style.display = "block";
+            break;
+        case 5:
+            t5.style.display = "block";
+            break;
+    }
+}

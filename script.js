@@ -8,6 +8,7 @@ canvas.width = canvasWidth;      // x
 canvas.height = canvasHeight;    // y
 
 var animationStart = 0;
+var showVector = 1;
 
 var r = 10;
 
@@ -30,9 +31,9 @@ var y;
 var dx;
 var dy;
 var ddx = 0;
-var ddy = -10 ; // przyspieszenie ziemskie
+var ddy = -10 ; // standard gravity
 
-// tor lotu
+// motion path
 var arrX = [];
 var arrY = [];
 
@@ -47,32 +48,23 @@ function hmax_xk_tk(){
     xk_text = document.getElementById("xk");
     tk_text = document.getElementById("tk");
 
-    // naprawić !
-    if(alfa < (2 * Math.PI) && alfa > Math.PI){
-        hmax = y0;
-        tk = (-dy0 + Math.sqrt((dy0 * dy0) + (2.0 * ddy * y0))) / ddy;
-    }
-    else{
-        hmax = y0 + ((dy0 * dy0) / (2.0 * ddy));
-        tk = (dy0 + Math.sqrt((dy0 * dy0) + (2.0 * ddy * y0))) / ddy;
-    }
-    if(alfa < (3.0/2 * Math.PI) && alfa > (1.0/2 * Math.PI)){
-        xk = - dx0 * tk;
-    }
-    else{
-        xk = dx0 * tk;
-    }
+    hmax = y0 + ((dy0 * dy0) / (2.0 * -ddy));
+    tk = (dy0 + Math.sqrt((dy0 * dy0) + (2.0 * -ddy * y0))) / -ddy;
+    xk = x0 + dx0 * tk;
+   
 
-    hmax_text.innerHTML = "Wysokość maksymalna = "+hmax;
-    xk_text.innerHTML = "Zasięg = "+xk;
+    hmax = Math.round(100 * hmax) / 100.0;
+    xk = Math.round(100 * xk) / 100.0;
+    tk = Math.round(100 * tk) / 100.0;
+
+    hmax_text.innerHTML = "Wysokość maksymalna = "+hmax+"m";
+    xk_text.innerHTML = "Zasięg = "+xk+"m";
     tk_text.innerHTML = "Czas spadku = "+tk+"s";
 
+    return tk;
 }
-hmax_xk_tk();
 
-/*
-    wszystko na osiach mniejsze -> potem w ToCanvas pomnożyć ? s
-*/
+var tk = hmax_xk_tk();
 
 // x, y - względem osi
 // funkcje do zamiany x, y na względem canvas
@@ -81,6 +73,45 @@ function xToCanvas(x){
 }
 function yToCanvas(y){
     return (canvasHeight - (y + gap));
+}
+
+function drawCircle(){
+    c.beginPath();
+    c.strokeStyle = "#000";
+    c.fillStyle = "#000";
+    c.arc(xToCanvas(x),yToCanvas(y), r, 0, 2*Math.PI);
+    c.fill();
+    c.stroke();
+}
+
+function drawVector(){
+    
+    var l = 60; // length of arrow
+    var headlen = 10; // length of head
+    var lx = l * Math.cos(alfa);
+    var ly = l * Math.sin(alfa);
+    var fromx = xToCanvas(x0);
+    var fromy = yToCanvas(y0);
+    var tox = fromx + lx;
+    var toy = fromy - ly;
+    var angle = Math.atan2(toy - fromy, tox - fromx);
+
+    // vector
+    c.beginPath();
+    c.strokeStyle = "#00F";
+
+    c.moveTo(fromx, fromy);
+    c.lineTo(tox, toy);
+    c.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+    c.moveTo(tox, toy);
+    c.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+    c.stroke();
+
+    // angle
+    c.beginPath();
+    c.arc(xToCanvas(x0),yToCanvas(y0), l/2, 2*Math.PI - alfa, 0);
+    c.strokeStyle = "#0F0";
+    c.stroke();
 }
 
 function clearCanvas(){
@@ -104,29 +135,29 @@ function clearCanvas(){
     c.strokeStyle = "#000";
     c.font = "20px Arial";
 
-    // osX
+    // X
     c.moveTo(axisX - 5,axisY);
     c.lineTo(canvasWidth - 50,axisY);
-        // strzalka
+        // arrow
     c.lineTo(canvasWidth - 60,axisY - 10);
     c.moveTo(canvasWidth - 50,axisY);
     c.lineTo(canvasWidth - 60, axisY + 10);
 
-    c.fillText("x", canvasWidth - 35, axisY + 5);
+    c.fillText("x[m]", canvasWidth - 45, axisY + 5);
 
-    //osY
+    // Y
     c.moveTo(axisX, canvasHeight - 25);
     c.lineTo(axisX, 50);
-        // strzalka
+        // arrow
     c.lineTo(axisX - 10, 60);
     c.moveTo(axisX, 50);
     c.lineTo(axisX + 10, 60);
 
-    c.fillText("y", axisX - 5, 35);
+    c.fillText("y[m]", axisX - 15, 35);
 
     c.stroke();
 
-    // zanczniki
+    // labels
     c.beginPath();
     c.strokeStyle = "#000";
     c.font = "10px Arial";
@@ -146,10 +177,10 @@ function clearCanvas(){
 
     c.stroke();
 
-    // tor lotu
+    // motion path
     if(arrX.length > 1){
         c.beginPath();
-        c.strokeStyle = "#F0F";
+        c.strokeStyle = "#284B63";
         c.moveTo(xToCanvas(arrX[0]),yToCanvas(arrY[0]));
         for(var i=1; i<arrX.length; i++){
             c.lineTo(xToCanvas(arrX[i]),yToCanvas(arrY[i]));
@@ -157,20 +188,12 @@ function clearCanvas(){
         c.stroke();
     }
 
-}
+    drawCircle();
 
-function drawCircle(){
-    clearCanvas();
-    c.beginPath();
-    c.strokeStyle = "#000";
-    c.fillStyle = "#000";
-    c.arc(xToCanvas(x),yToCanvas(y), r, 0, 2*Math.PI);
-    c.fill();
-    c.stroke();
-    // console.log("drawCircle "+x+" "+y);
-}
+    if(showVector == 1)
+        drawVector();
 
-// function drawVectorv0()
+}
 
 function setData(){
     x = x0;
@@ -184,16 +207,43 @@ function setData(){
 
 
 function changeData(){
-    h = parseFloat(document.getElementById("y0").value);
-    v = parseFloat(document.getElementById("v0").value);
-    a = parseFloat(document.getElementById("alfa").value);
+    form_x0 = document.getElementById("x0");
+    form_y0 = document.getElementById("y0");
+    form_v0 = document.getElementById("v0");
+    form_alfa = document.getElementById("alfa");
+
+    x0_form = parseFloat(form_x0.value);
+    h = parseFloat(form_y0.value);
+    v = parseFloat(form_v0.value);
+    a = parseFloat(form_alfa.value);
+
+    // data validation
+    if(x0_form < 0)     form_x0.value = 0;
+    else if(x0_form > 600)   form_x0.value = 600;
+    
+    if(h < 0)   form_y0.value = 0;
+    else if(h > 400) form_y0.value = 400;
+    
+    if(v < 0)   form_v0.value = 0;
+    else if(v > 70)  form_v0.value = 70;
+    
+    if(a < 0 && a > -360)   form_alfa.value = 360 + a;
+    else if(a < 0)   form_alfa.value = 0;
+    else if(a > 360) form_alfa.value = 360;
+
+    x0_form = parseFloat(form_x0.value);
+    h = parseFloat(form_y0.value);
+    v = parseFloat(form_v0.value);
+    a = parseFloat(form_alfa.value);
+
+    x0 = x0_form;
     y0 = h;
-    alfa = a * (Math.PI/180.0);  // zamiana na radiany
+    alfa = a * (Math.PI/180.0);  // to radian
     dx0 = v * Math.cos(alfa);
     dy0 = v * Math.sin(alfa);
 
     setData();
-    hmax_xk_tk();
+    tk = hmax_xk_tk();
 }
 
 // zmiana danych po wpisaniu w arkusz
@@ -202,10 +252,11 @@ for(var i=0; i<animationData.length; i++){
     animationData[i].addEventListener("change",
     function() {
         changeData();
-        drawCircle();
+        clearCanvas();
     });
 }
 
+// funkcja animująca rzut
 function animate(){
     if(animationStart == 1)
         requestAnimationFrame(animate);
@@ -214,7 +265,6 @@ function animate(){
     var t = (time.getTime() - t0) / 1000.0;
 
     clearCanvas();
-    drawCircle();
 
     arrX.push(x);
     arrY.push(y);
@@ -224,11 +274,12 @@ function animate(){
 
     console.log("t = "+t+" x = "+x+" y = "+y);
 
-    if(y-r <= 0)    // lepszy warunek t == tk;
+    if(y <= 0 && Math.round(t) == Math.round(tk) )    // lepszy warunek t == tk;
         animationStart = 0;
 
 }
 
+// obsługa przycisków
 function startAnimation(){
     setData();
     var time = new Date();
@@ -246,16 +297,26 @@ function stopAnimation(){
 function resetAnimation(){
     stopAnimation();
     setData();
-    drawCircle();
+    clearCanvas();
+}
+
+function showVectorFun(){
+    button = document.getElementById("showVectorButton");
+    if(showVector == 0){
+        showVector = 1;
+        button.textContent = 'Ukryj wektor';
+    }   
+    else{
+        showVector = 0;
+        button.textContent = 'Pokaż wektor';
+    }
+    clearCanvas();
 }
 
 
 // wywolania
 setData();
 clearCanvas();
-drawCircle();
-//drawVectorv0()
-
 
 // sticky nav
 var nav = document.getElementsByTagName("nav");
@@ -270,36 +331,52 @@ window.onscroll = function(){
 
 
 // allThrows display none, block;
-
 function selectThrow(n){
     t1 = document.getElementById("rzutPionowySpadekSwobodnyInfo");
     t2 = document.getElementById("rzutPionowyGoraInfo");
     t3 = document.getElementById("rzutPionowyDolInfo");
     t4 = document.getElementById("rzutPoziomyInfo");
     t5 = document.getElementById("rzutUkosnyInfo");
-    // t_1 = document.getElementById("rzutPionowy");
-    // t_2 = document.getElementById("rzutPoziomy");
-    // t_3 = document.getElementById("rzutUkosny");
+
+    t1_choose = document.getElementById("rzutPionowySpadekSwobodny");
+    t2_choose = document.getElementById("rzutPionowyGora");
+    t3_choose = document.getElementById("rzutPionowyDol");
+    t4_choose = document.getElementById("rzutPoziomy");
+    t5_choose = document.getElementById("rzutUkosny");
+
     t1.style.display = "none";
     t2.style.display = "none";
     t3.style.display = "none";
     t4.style.display = "none";
     t5.style.display = "none";
+
+    t1_choose.style.color = "#fff";
+    t2_choose.style.color = "#fff";
+    t3_choose.style.color = "#fff";
+    t4_choose.style.color = "#fff";
+    t5_choose.style.color = "#fff";
+
+
     switch(n){
         case 1:
             t1.style.display = "block";
+            t1_choose.style.color = "#000";
             break;
         case 2:
             t2.style.display = "block";
+            t2_choose.style.color = "#000";
             break;
         case 3:
             t3.style.display = "block";
+            t3_choose.style.color = "#000";
             break;
         case 4:
             t4.style.display = "block";
+            t4_choose.style.color = "#000";
             break;
         case 5:
             t5.style.display = "block";
+            t5_choose.style.color = "#000";
             break;
     }
 }

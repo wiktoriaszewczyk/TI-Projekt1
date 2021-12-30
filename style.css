@@ -5,6 +5,7 @@ body{
     background-color: #353535;
     color: #FFF;
     margin: 0;
+    min-width: 480px;
 }
 header{
     width: 100%;
@@ -42,15 +43,10 @@ main{
     width: 90%;
     text-align: justify;
     margin: 20px auto;
-    /* margin-left: auto; */
-    /* margin-right: auto; */
-    /* margin-top: 20px; */
     /* font-family: 'Roboto Slab', serif; */
-    /* border: 1px burlywood solid; */
 }
 
 footer{
-    /* margin-top: 20px; */
     padding: 10px 10px;
     border-top: solid 2px #3C6E71;
     background-color: #353535;
@@ -63,55 +59,28 @@ footer{
     font-family: 'Karla', sans-serif;
 }
 
-#animation{
-    background-color: white;
-    /* height: 420px; */
-    /* padding: 20px; */
-    /* min-width: 1100px; */
-}
- 
-#canvasForAnimation{
-    background-color: white;
-    float: left;
-    width: 60%;
+/********************************************************************/
 
+#intro{
+    width: 97%;
+    margin: 0 auto;
 }
 
-#formData{
-    float: right;
-    width: 40%;
-    /* margin: auto; */
-    background-color: #3C6E71;
-    color: #000;
-}
-
-/* #tableFormData{
-    width: 250px;
-} */
-
-#tableFormData button{
-    border: 1px solid #AAA;
-    border-radius: 4px;
-}
-
-.animationData{
-    width: 60px;
-    border: 1px solid #AAA;
-}
-
+/********************************************************************/
 
 #allThrows{
     margin: 30px 0;
-    height: 1000px;
+    height: 950px;
 }
 
 #chooseThrow{
     float: left;
-    width: 10%;
+    width: 12%;
+    min-width: 120px;
     height: 100%;
     background-color: #284B63;
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 #chooseThrow ul{
@@ -120,59 +89,187 @@ footer{
     padding: 0;
 }
 
-#chooseThrow li{
-    height: 50px;
+#chooseThrow ul li{
+    height: 70px;
     width: 100%;
-    border-bottom: 1px black solid;
+    border-bottom: 1px white solid;
     cursor: pointer;
+    font-family: 'Karla', sans-serif;
+    text-align: center;
+    padding-top: 25px;
 }
 
-#chooseThrow li:hover{
+#chooseThrow ul li:hover{
     background-color: #3C6E71;
 }
 
-.rzut{
-    float: right;
-    width: 90%;
+.throw{
+    overflow: hidden;
     height: 100%;
     background-color: #FFF;
     color: #000;
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .ThrowImg{
     width: 40%;
     display: block;
     margin: 0 auto;
+    min-width: 350px;
 }
 
-#VectorElementsAll{
-    background-color: #FFF;
-    width: 80%;
-    display: block;
+.formulas{
+    width: 90%;
     margin: 0 auto;
-    border-radius: 4px;
-    /* height: 450px; */
 }
 
-#vectorElementsImg{
+.leftFormulas{
     float: left;
-    height: auto;
-    width: 40%;
-    margin: auto 0;
+    width: 50%;
 }
 
-#vectorElements{
-    float: right;
-    width: 35%;
-    color: #000;
+.rightFormulas{
+    overflow: hidden;
+    width: 50%;
 }
+
+@media (max-width: 600px){
+    #allThrows{
+        height: 1080px;
+    }
+    .leftFormulas{
+        float: none;
+        width: 100%
+    }
+    .rightFormulas{
+        width: 100%
+    }
+}
+
+/********************************************************************/
 
 video{
     width: 400px;
     display: block;
     margin: 0 auto;
+}
+
+/********************************************************************/
+
+#VectorElementsAll{
+    /* background-color: #FFF; */
+    width: 60%;
+    display: block;
+    margin: 30px auto;
+    height: 260px;
+}
+
+#vectorElementsImg{
+    float: left;
+    height: auto;
+    width: 45%;
+    min-width: 300px;
+    margin: auto 0;
+    border-radius: 10px;
+}
+
+#vectorElements{
+    overflow: auto;
+    text-align: center;
+    vertical-align: auto;
+    padding-top: 60px;
+}
+
+@media (max-width: 810px){
+    #VectorElementsAll{
+        height: 310px;
+    }
+    #vectorElementsImg{
+        float: none;
+        display: block;
+        width: 300px;
+        margin: 0 auto;
+    }
+    #vectorElements{
+        padding-top: 20px;
+    }
+}
+
+/********************************************************************/
+
+#animation{
+    /* height: 500px; */
+    /* max-height: 1000px; */
+    margin: 20px auto;
+    display: -webkit-flex;
+    display: flex;
+}
+
+#canvas{
+    background-color: white;
+    width: 60%;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#canvas canvas{
+    width: 100%;
+}
+
+#formData{
+    width: 36%;
+    padding: 0 2%;
+    background-color: #284B63;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+#tableFormData{
+    margin: 0 auto;
+}
+
+#tableFormData tr td{
+    padding: 5px;
+}
+
+button{
+    border: 1px solid #AAA;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+#showVectorButton{
+    padding: 5px 0;
+    width: 100px;
+}
+
+.animationData{
+    width: 60px;
+    border: 1px solid #AAA;
+}
+
+@media (max-width: 925px){
+    #animation{
+        /* padding-bottom: 10px; */
+        display: block;
+    }
+    #formData{
+        width: 95%;
+        margin: 0 auto; 
+        border-radius: 10px;
+    }
+    #formData div{
+        padding-top: 10px;
+    }
+    #formData p:last-child{
+        padding-bottom: 10px;
+    }
+    #canvas{
+        display: block;
+        width: 95%;
+        margin: 0 auto;
+        border-radius: 10px;
+    }
 }
 
 

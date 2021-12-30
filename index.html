@@ -13,12 +13,17 @@
     </header>
 
     <nav>
-        <!-- <ul>
-            <li>Wstęp</li>
-            <li>Wzory</li>
+        <ul>
+            <li onclick="goTo('intro')">Wstęp</li>
+            <li class="rzutPionowySpadekSwobodny" onclick="selectThrow(1), goTo('allThrows')" style="color: #000;">Rzut pionowy<br />Spadek swobodny</li>
+            <li class="rzutPionowyGora" onclick="selectThrow(2)">Rzut pionowy<br />W górę</li>
+            <li class="rzutPionowyDol" onclick="selectThrow(3)">Rzut pionowy<br />W dół</li>
+            <li class="rzutPoziomy" onclick="selectThrow(4)">Rzut poziomy</li>
+            <li class="rzutUkosny"  onclick="selectThrow(5)">Rzut ukośny</li>
             <li>Rozkład wektora na składowe</li>
             <li>Animacja</li>
-        </ul> -->
+            <li>Dokumentacja</li>
+        </ul>
     </nav>
 
     <main>
@@ -44,11 +49,11 @@
         <div id="allThrows">
             <div id="chooseThrow">
                 <ul>
-                    <li id="rzutPionowySpadekSwobodny" onclick="selectThrow(1)" style="color: #000;">Rzut pionowy<br />Spadek swobodny</li>
-                    <li id="rzutPionowyGora" onclick="selectThrow(2)">Rzut pionowy<br />W górę</li>
-                    <li id="rzutPionowyDol" onclick="selectThrow(3)">Rzut pionowy<br />W dół</li>
-                    <li id="rzutPoziomy" onclick="selectThrow(4)">Rzut poziomy</li>
-                    <li id="rzutUkosny"  onclick="selectThrow(5)">Rzut ukośny</li>
+                    <li class="rzutPionowySpadekSwobodny" onclick="selectThrow(1)" style="color: #000;">Rzut pionowy<br />Spadek swobodny</li>
+                    <li class="rzutPionowyGora" onclick="selectThrow(2)">Rzut pionowy<br />W górę</li>
+                    <li class="rzutPionowyDol" onclick="selectThrow(3)">Rzut pionowy<br />W dół</li>
+                    <li class="rzutPoziomy" onclick="selectThrow(4)">Rzut poziomy</li>
+                    <li class="rzutUkosny"  onclick="selectThrow(5)">Rzut ukośny</li>
                 </ul>
             </div>
             <div class="throw" id="rzutPionowySpadekSwobodnyInfo" style="display: block;">

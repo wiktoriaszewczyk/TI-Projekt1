@@ -21,6 +21,27 @@ header{
     margin-left: auto;
     margin-right: auto;
 }
+
+main{
+    width: 90%;
+    text-align: justify;
+    margin: 20px auto;
+    font-family: 'Roboto Slab', serif; /* inna czcionka? */
+}
+
+footer{
+    padding: 10px 10px;
+    border-top: solid 2px #3C6E71;
+    background-color: #353535;
+    color: #3C6E71;
+}
+
+.headers{
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Karla', sans-serif;
+}
+/********************************/
 nav{
     width: 100%;
     padding: 10px 0;
@@ -39,24 +60,30 @@ nav{
     padding-top: 50px;
 }
 
-main{
+nav ul{
+    display: -webkit-flex;
+    display: flex;
+    margin: 0 auto;
     width: 90%;
-    text-align: justify;
-    margin: 20px auto;
-    /* font-family: 'Roboto Slab', serif; */
+    list-style-type: none;
+    padding: 0;
 }
 
-footer{
-    padding: 10px 10px;
-    border-top: solid 2px #3C6E71;
-    background-color: #353535;
-    color: #3C6E71;
-}
-
-.headers{
-    font-size: 20px;
+nav ul li{
+    display: block;
+    width: 11.1%;
+    min-width: 100px;
     text-align: center;
-    font-family: 'Karla', sans-serif;
+    border-left: 1px #fff solid;
+}
+
+nav ul li:last-child{
+    border-right: 1px #fff solid;
+}
+
+nav ul li:hover{
+    background-color: #3C6E71;
+    cursor: pointer;
 }
 
 /********************************************************************/
@@ -70,14 +97,13 @@ footer{
 
 #allThrows{
     margin: 30px 0;
-    height: 950px;
+    display: -webkit-flex;
+    display: flex;
 }
 
 #chooseThrow{
-    float: left;
     width: 12%;
     min-width: 120px;
-    height: 100%;
     background-color: #284B63;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
@@ -93,7 +119,6 @@ footer{
     height: 70px;
     width: 100%;
     border-bottom: 1px white solid;
-    cursor: pointer;
     font-family: 'Karla', sans-serif;
     text-align: center;
     padding-top: 25px;
@@ -101,11 +126,10 @@ footer{
 
 #chooseThrow ul li:hover{
     background-color: #3C6E71;
+    cursor: pointer;
 }
 
 .throw{
-    overflow: hidden;
-    height: 100%;
     background-color: #FFF;
     color: #000;
     border-bottom-right-radius: 10px;
@@ -199,8 +223,6 @@ video{
 /********************************************************************/
 
 #animation{
-    /* height: 500px; */
-    /* max-height: 1000px; */
     margin: 20px auto;
     display: -webkit-flex;
     display: flex;

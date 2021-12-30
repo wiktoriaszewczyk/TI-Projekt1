@@ -329,6 +329,12 @@ window.onscroll = function(){
         nav[0].classList.remove("sticky");
 };
 
+function goTo(id){
+    // window.location.href="#"+id;
+    document.getElementById(id).scrollTop = -300;
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 
 // allThrows display none, block;
 function selectThrow(n){
@@ -338,11 +344,11 @@ function selectThrow(n){
     t4 = document.getElementById("rzutPoziomyInfo");
     t5 = document.getElementById("rzutUkosnyInfo");
 
-    t1_choose = document.getElementById("rzutPionowySpadekSwobodny");
-    t2_choose = document.getElementById("rzutPionowyGora");
-    t3_choose = document.getElementById("rzutPionowyDol");
-    t4_choose = document.getElementById("rzutPoziomy");
-    t5_choose = document.getElementById("rzutUkosny");
+    t1_choose = document.getElementsByClassName("rzutPionowySpadekSwobodny");
+    t2_choose = document.getElementsByClassName("rzutPionowyGora");
+    t3_choose = document.getElementsByClassName("rzutPionowyDol");
+    t4_choose = document.getElementsByClassName("rzutPoziomy");
+    t5_choose = document.getElementsByClassName("rzutUkosny");
 
     t1.style.display = "none";
     t2.style.display = "none";
@@ -350,33 +356,39 @@ function selectThrow(n){
     t4.style.display = "none";
     t5.style.display = "none";
 
-    t1_choose.style.color = "#fff";
-    t2_choose.style.color = "#fff";
-    t3_choose.style.color = "#fff";
-    t4_choose.style.color = "#fff";
-    t5_choose.style.color = "#fff";
-
+    for(var i=0; i<t1_choose.length; i++){
+        t1_choose[i].style.color = "#fff";
+        t2_choose[i].style.color = "#fff";
+        t3_choose[i].style.color = "#fff";
+        t4_choose[i].style.color = "#fff";
+        t5_choose[i].style.color = "#fff";
+    }
 
     switch(n){
         case 1:
             t1.style.display = "block";
-            t1_choose.style.color = "#000";
+            for(var i=0; i<t1_choose.length; i++)
+                t1_choose[i].style.color = "#000";
             break;
         case 2:
             t2.style.display = "block";
-            t2_choose.style.color = "#000";
+            for(var i=0; i<t1_choose.length; i++)
+                t2_choose[i].style.color = "#000";
             break;
         case 3:
             t3.style.display = "block";
-            t3_choose.style.color = "#000";
+            for(var i=0; i<t1_choose.length; i++)
+                t3_choose[i].style.color = "#000";
             break;
         case 4:
             t4.style.display = "block";
-            t4_choose.style.color = "#000";
+            for(var i=0; i<t1_choose.length; i++)
+                t4_choose[i].style.color = "#000";
             break;
         case 5:
             t5.style.display = "block";
-            t5_choose.style.color = "#000";
+            for(var i=0; i<t1_choose.length; i++)
+                t5_choose[i].style.color = "#000";
             break;
     }
 }

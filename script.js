@@ -98,7 +98,7 @@ function drawVector(){
 
     // vector
     c.beginPath();
-    c.strokeStyle = "#00F";
+    c.strokeStyle = "#F46197";
 
     c.moveTo(fromx, fromy);
     c.lineTo(tox, toy);
@@ -109,15 +109,19 @@ function drawVector(){
 
     // angle
     c.beginPath();
+    c.strokeStyle = "#3C6E71";
+    
     c.arc(xToCanvas(x0),yToCanvas(y0), l/2, 2*Math.PI - alfa, 0);
-    c.strokeStyle = "#0F0";
+    c.moveTo(fromx, fromy);
+    c.lineTo(fromx + lx, fromy);
+
     c.stroke();
 }
 
 function clearCanvas(){
     c.clearRect(0,0,canvasWidth,canvasHeight);
     // rysowanie osi
-    c.beginPath(); 
+    c.beginPath();
     c.strokeStyle = "#AAA";
     for(var i=50; i < (canvasWidth - 50); i+=50){
         c.moveTo(axisX + i, 50);
@@ -330,9 +334,11 @@ window.onscroll = function(){
 };
 
 function goTo(id){
-    // window.location.href="#"+id;
-    document.getElementById(id).scrollTop = -300;
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const yOffset = -60; 
+    const element = document.getElementById(id);
+    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({top: y, behavior: 'smooth'});
 }
 
 
@@ -344,11 +350,11 @@ function selectThrow(n){
     t4 = document.getElementById("rzutPoziomyInfo");
     t5 = document.getElementById("rzutUkosnyInfo");
 
-    t1_choose = document.getElementsByClassName("rzutPionowySpadekSwobodny");
-    t2_choose = document.getElementsByClassName("rzutPionowyGora");
-    t3_choose = document.getElementsByClassName("rzutPionowyDol");
-    t4_choose = document.getElementsByClassName("rzutPoziomy");
-    t5_choose = document.getElementsByClassName("rzutUkosny");
+    t1_choose = document.getElementById("rzutPionowySpadekSwobodny");
+    t2_choose = document.getElementById("rzutPionowyGora");
+    t3_choose = document.getElementById("rzutPionowyDol");
+    t4_choose = document.getElementById("rzutPoziomy");
+    t5_choose = document.getElementById("rzutUkosny");
 
     t1.style.display = "none";
     t2.style.display = "none";
@@ -356,39 +362,32 @@ function selectThrow(n){
     t4.style.display = "none";
     t5.style.display = "none";
 
-    for(var i=0; i<t1_choose.length; i++){
-        t1_choose[i].style.color = "#fff";
-        t2_choose[i].style.color = "#fff";
-        t3_choose[i].style.color = "#fff";
-        t4_choose[i].style.color = "#fff";
-        t5_choose[i].style.color = "#fff";
-    }
+    t1_choose.style.color = "#fff";
+    t2_choose.style.color = "#fff";
+    t3_choose.style.color = "#fff";
+    t4_choose.style.color = "#fff";
+    t5_choose.style.color = "#fff";
 
     switch(n){
         case 1:
             t1.style.display = "block";
-            for(var i=0; i<t1_choose.length; i++)
-                t1_choose[i].style.color = "#000";
+            t1_choose.style.color = "#000";
             break;
         case 2:
             t2.style.display = "block";
-            for(var i=0; i<t1_choose.length; i++)
-                t2_choose[i].style.color = "#000";
+            t2_choose.style.color = "#000";
             break;
         case 3:
             t3.style.display = "block";
-            for(var i=0; i<t1_choose.length; i++)
-                t3_choose[i].style.color = "#000";
+            t3_choose.style.color = "#000";
             break;
         case 4:
             t4.style.display = "block";
-            for(var i=0; i<t1_choose.length; i++)
-                t4_choose[i].style.color = "#000";
+            t4_choose.style.color = "#000";
             break;
         case 5:
             t5.style.display = "block";
-            for(var i=0; i<t1_choose.length; i++)
-                t5_choose[i].style.color = "#000";
+            t5_choose.style.color = "#000";
             break;
     }
 }

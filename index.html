@@ -14,21 +14,24 @@
 
     <nav>
         <ul>
-            <li onclick="goTo('intro')">Wstęp</li>
-            <li class="rzutPionowySpadekSwobodny" onclick="selectThrow(1), goTo('allThrows')" style="color: #000;">Rzut pionowy<br />Spadek swobodny</li>
-            <li class="rzutPionowyGora" onclick="selectThrow(2)">Rzut pionowy<br />W górę</li>
-            <li class="rzutPionowyDol" onclick="selectThrow(3)">Rzut pionowy<br />W dół</li>
-            <li class="rzutPoziomy" onclick="selectThrow(4)">Rzut poziomy</li>
-            <li class="rzutUkosny"  onclick="selectThrow(5)">Rzut ukośny</li>
-            <li>Rozkład wektora na składowe</li>
-            <li>Animacja</li>
-            <li>Dokumentacja</li>
+            <li class="liNav" onclick="goTo('intro')">Wstęp</li>
+            
+            <li id="rzutNav" onclick="goTo('allThrows')">Rzuty<li>
+            
+            <li class="rzutClass" onclick="selectThrow(1), goTo('allThrows')">Rzut pionowy<br />Spadek swobodny</li>
+            <li class="rzutClass" onclick="selectThrow(2), goTo('allThrows')">Rzut pionowy<br />W górę</li>
+            <li class="rzutClass" onclick="selectThrow(3), goTo('allThrows')">Rzut pionowy<br />W dół</li>
+            <li class="rzutClass" onclick="selectThrow(4), goTo('allThrows')">Rzut poziomy</li>
+            <li class="rzutClass"  onclick="selectThrow(5), goTo('allThrows')">Rzut ukośny</li>
+            
+            <li class="liNav" onclick="goTo('VectorElementsAll')">Rozkład wektora<br/>na składowe</li>
+            <li class="liNav" onclick="goTo('animation')">Animacja</li>
         </ul>
     </nav>
 
     <main>
         
-        <article id="intro">
+        <article id="intro" aria-label="article">
             <p class="headers" id="introHeader" >Wstęp</p>
             <p>
                 Strzał z armaty, rzut kamieniem, kopnięcie piłki, przypadkowe upuszczenie czegoś
@@ -49,17 +52,17 @@
         <div id="allThrows">
             <div id="chooseThrow">
                 <ul>
-                    <li class="rzutPionowySpadekSwobodny" onclick="selectThrow(1)" style="color: #000;">Rzut pionowy<br />Spadek swobodny</li>
-                    <li class="rzutPionowyGora" onclick="selectThrow(2)">Rzut pionowy<br />W górę</li>
-                    <li class="rzutPionowyDol" onclick="selectThrow(3)">Rzut pionowy<br />W dół</li>
-                    <li class="rzutPoziomy" onclick="selectThrow(4)">Rzut poziomy</li>
-                    <li class="rzutUkosny"  onclick="selectThrow(5)">Rzut ukośny</li>
+                    <li id="rzutPionowySpadekSwobodny" onclick="selectThrow(1)" style="color: #000;">Rzut pionowy<br />Spadek swobodny</li>
+                    <li id="rzutPionowyGora" onclick="selectThrow(2)">Rzut pionowy<br />W górę</li>
+                    <li id="rzutPionowyDol" onclick="selectThrow(3)">Rzut pionowy<br />W dół</li>
+                    <li id="rzutPoziomy" onclick="selectThrow(4)">Rzut poziomy</li>
+                    <li id="rzutUkosny"  onclick="selectThrow(5)">Rzut ukośny</li>
                 </ul>
             </div>
             <div class="throw" id="rzutPionowySpadekSwobodnyInfo" style="display: block;">
                 <p class="headers">Spadek swobodny</p>
-                <img src="img/Rzut pionowy - spadek swobodny.png" alt="Rysunek poglądowy spadku swobodnego" class="ThrowImg">
-                <article class="formulas">
+                <img src="img/Rzut_pionowy_spadek_swobodny.png" alt="Rysunek poglądowy spadku swobodnego" class="ThrowImg">
+                <article class="formulas" aria-label="article">
                     <p>
                         Ruch odbywa się wyłącznie pod wpływem siły grawitacji. 
                         Rozpoczyna się od spoczynku na wysokości \( h_{0} \). 
@@ -83,8 +86,8 @@
             </div>
             <div class="throw" id="rzutPionowyGoraInfo" style="display: none;">
                 <p class="headers">Rzut pionowy w górę</p>
-                <img src="img/Rzut pionowy - w gore.png" alt="Rysunek poglądowy rzutu pionowego w górę" class="ThrowImg">
-                <article class="formulas">
+                <img src="img/Rzut_pionowy_w_gore.png" alt="Rysunek poglądowy rzutu pionowego w górę" class="ThrowImg">
+                <article class="formulas" aria-label="article">
                     <p>
                         Jedyną siłą działającą na ciało jest siła ciężkości. Działa ona w kiedunku zgodnym z ruchem ciała.
                         Ciało początkowo znajduje się na wysokości \( h_0 \). 
@@ -109,8 +112,8 @@
             </div>
             <div class="throw" id="rzutPionowyDolInfo" style="display: none;">
                 <p class="headers">Rzut pionowy w dół</p>
-                <img src="img/Rzut pionowy - w dol.png" alt="Rysunek poglądowy rzutu pionowego w dół" class="ThrowImg">
-                <article class="formulas">
+                <img src="img/Rzut_pionowy_w_dol.png" alt="Rysunek poglądowy rzutu pionowego w dół" class="ThrowImg">
+                <article class="formulas" aria-label="article">
                     <p>
                         Jedyną siłą działającą na ciało jest siła ciężkości. Działa ona w kiedunku zgodnym z ruchem ciała.
                         Ciało początkowo znajduje się na wysokości \( h_{0} \). 
@@ -134,8 +137,8 @@
             </div>
             <div class="throw" id="rzutPoziomyInfo" style="display: none;">
                 <p class="headers">Rzut poziomy</p>
-                <img src="img/Rzut poziomy.png" alt="Rysunek poglądowy rzutu poziomego" class="ThrowImg">
-                <article class="formulas">
+                <img src="img/Rzut_poziomy.png" alt="Rysunek poglądowy rzutu poziomego" class="ThrowImg">
+                <article class="formulas" aria-label="article">
                     <p>
                         Rzut poziomy można rozważać jako ruch składający się z rzutu pionowego (spadku swobodnego) i ruchu jednostajnego prostoliniowego.
                         Ciało początkowo znajduje się na wysokości \( h_{0} \) oraz została mu nadana prędkość początkowa w kierunku osi X. 
@@ -165,8 +168,8 @@
             </div>
             <div class="throw" id="rzutUkosnyInfo" style="display: none;">
                 <p class="headers">Rzut ukośny</p>
-                <img src="img/Rzut ukosny.png" alt="Rysunek poglądowy rzutu ukośnego" class="ThrowImg">
-                <article class="formulas">
+                <img src="img/Rzut_ukosny.png" alt="Rysunek poglądowy rzutu ukośnego" class="ThrowImg">
+                <article class="formulas" aria-label="article">
                     <p>
                         Rzut ukośny można rozważać jako ruch składający się z rzutu pionowego i ruchu jednostajnego prostoliniowego. 
                         Ciało początkowo znajduje się na wysokości \( h_{0} \) oraz została mu nadana prędkość początkowa w kierunku ukośnym do pola grawitacyjnego. 
@@ -207,66 +210,67 @@
             <source src="img/video_rzuty.mp4" type="video/mp4">
         </video>
 
-        <p id="vectorElementHeader" class="headers">Rozkład wektora prędkości początkowej na składowe</p>
         <div id="VectorElementsAll">
-            <img src="img/Predkosci skladowe v0.png" id="vectorElementsImg">
-            <article id="vectorElements">
+            <p id="vectorElementHeader" class="headers">Rozkład wektora prędkości początkowej na składowe</p>
+            <img src="img/Predkosci_skladowe_v0.png" alt="Rysunek poglądowy rozkładu wektora na składowe" id="vectorElementsImg">
+            <article id="vectorElements" aria-label="article">
                 <p>\( v_{x0} = v_0 cos(\alpha) \)</p>
                 <p>\( v_{y0} = v_0 cos(\alpha) \)</p>
             </article>
             <div style="clear: both;"></div>
         </div>
 
-        <!-- animacja -->
-        <p id="animationHeader" class="headers">Animacja dowolnego rzutu</p>
-        <article id="animation">
-            <div id="formData">
-                <div>
-                    <p>Wartości początkowe położenia - dodatnie, x<sub>0</sub> nie większe niż 600, y<sub>0</sub> nie większe niż 300.</p>
-                    <p>Prędkość początkowa v<sub>0</sub> - dodatnia oraz nie większa niż 70, aby obiekt nie wyleciał poza obszar obserwacji.</p>
-                    <p>Kąt nachylenia prędkości początkowej &alpha; - dodatni, podany w stopniach i nie przekraczający 360&#176;.</p>
-                    <p>Wektor prędkości początkowej na wykresie jest tylko poglądowy - nie są zachowane proporcje (ma zawsze taką samą długość).</p>
-                </div>
-                <form id="data">
-                    <table id="tableFormData">
-                        <tr>
-                            <td><label for="x0">x<sub>0</sub></label></td>
-                            <td><input type="number" id="x0" name="x0" class="animationData"/></td>
-                        </tr>
-                        <tr>
-                            <td><label for="y0">y<sub>0</sub></label></td>
-                            <td><input type="number" id="y0" name="y0" class="animationData"/></td>
-                        </tr>
-                        <tr>
-                            <td><label for="v0">v<sub>0</sub></label></td>
-                            <td><input type="number" id="v0" name="v0" class="animationData"/></td>
-                        </tr>
-                        <tr>
-                            <td><label for="alfa">&alpha;</label></td>
-                            <td><input type="number" id="alfa" name="alfa" class="animationData"/></td>
-                        </tr>
-                    </table>
-                </form>
-                <p style="text-align: center;">
-                    <button onclick="startAnimation()">Start</button>
-                    <button onclick="stopAnimation()">Stop</button>
-                    <button onclick="resetAnimation()">Reset</button>
-                    <button onclick="showVectorFun()" id="showVectorButton">Ukryj wektor</button>
-                </p>
-                <p id="hmax" style="text-align: center;">Wysokość maksymalna = </p>
-                <p id="xk" style="text-align: center;">Zasięg = </p>
-                <p id="tk" style="text-align: center;">Czas spadku = </p>
+        <article id="animation" aria-label="article">
+            <p id="animationHeader" class="headers">Animacja dowolnego rzutu</p>
+            <div id="animationFlex">
+                <div id="formData">
+                    <div>
+                        <p>Wartości początkowe położenia - dodatnie, x<sub>0</sub> nie większe niż 600, y<sub>0</sub> nie większe niż 300.</p>
+                        <p>Prędkość początkowa v<sub>0</sub> - dodatnia oraz nie większa niż 70, aby obiekt nie wyleciał poza obszar obserwacji.</p>
+                        <p>Kąt nachylenia prędkości początkowej &alpha; - dodatni, podany w stopniach i nie przekraczający 360&#176;.</p>
+                        <p>Wektor prędkości początkowej na wykresie jest tylko poglądowy - nie są zachowane proporcje (ma zawsze taką samą długość).</p>
+                    </div>
+                    <form id="data">
+                        <table id="tableFormData">
+                            <tr>
+                                <td><label for="x0">x<sub>0</sub></label></td>
+                                <td><input type="number" id="x0" name="x0" class="animationData"/></td>
+                            </tr>
+                            <tr>
+                                <td><label for="y0">y<sub>0</sub></label></td>
+                                <td><input type="number" id="y0" name="y0" class="animationData"/></td>
+                            </tr>
+                            <tr>
+                                <td><label for="v0">v<sub>0</sub></label></td>
+                                <td><input type="number" id="v0" name="v0" class="animationData"/></td>
+                            </tr>
+                            <tr>
+                                <td><label for="alfa">&alpha;</label></td>
+                                <td><input type="number" id="alfa" name="alfa" class="animationData"/></td>
+                            </tr>
+                        </table>
+                    </form>
+                    <p style="text-align: center;">
+                        <button onclick="startAnimation()">Start</button>
+                        <button onclick="stopAnimation()">Stop</button>
+                        <button onclick="resetAnimation()">Reset</button>
+                        <button onclick="showVectorFun()" id="showVectorButton">Ukryj wektor</button>
+                    </p>
+                    <p id="hmax" style="text-align: center;">Wysokość maksymalna = </p>
+                    <p id="xk" style="text-align: center;">Zasięg = </p>
+                    <p id="tk" style="text-align: center;">Czas spadku = </p>
 
-            </div>
-            <div id="canvas">
-                <canvas id="canvasForAnimation">Animation</canvas>
+                </div>
+                <div id="canvas">
+                    <canvas id="canvasForAnimation">Animation</canvas>
+                </div>
             </div>
         </article>
     </main>
 
     <footer>
         Projekt z przedmiotu Techniki Internetowe - Wiktoria Szewczyk
-        <!-- back to top link-->
+        <button onclick="window.location.href='dokumentacja.html';">Dokumentacja</button>
     </footer>
     <script src="script.js"></script>
 </body>

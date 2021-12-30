@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Wiktoria Szewczyk">
+    <link rel="StyleSheet" href="style.css" type="text/css">
+    <style>
+        .italic{
+            font-style: italic;
+        }
+    </style>
+    <title>Projekt1 Wiktoria Szewczyk</title>
+</head>
+<body>
+    <header>
+        <div id="headerText">Dokumentacja</div>
+    </header>
+
+    <main>
+        <p>
+            Zawartość merytoryczna projektu dotyczy zagadnienia z dziedziny fizyki, a dokładniej rzutów w polu grawitacyjnym.
+            Wszystkie podstawowe informacje są zawarte na stornie, każdy przypadek został zobrazowany na ilustracjach, opisany słownie i poprzez wzory.
+            Po podaniu wartości początkowych, uzyskujemy podstawowe informacje na temat danego rzutu, a animacja obrazuje tor ruchu.
+        </p>
+        <p>
+            W projekcie zostały użyte elementy semantyczne języka <span class="italic">HTML5</span> tj. <span class="italic">&lt;header&gt;, &lt;nav&gt;, &lt;article&gt;, &lt;footer&gt;</span> idt.
+            Treść multimedialna została dodana przy użyciu elementu <span class="italic">&lt;video&gt;</span>.
+        </p>
+        <p>
+            Zagadnienie zostało zobrazowane za pomocą animacji wykonanej z wykorzystaniem elementu <span class="italic">&lt;canvas&gt;</span> oraz języka JavaScript.
+        </p>
+        <p>
+            Dodatkowo język JavaScript został wykorzystany do modyfikacji dokumentu <span class="italic">HTML5</span>. Funkcja <span class="italic">"getElementById"</span> została użyta w wielu miejscach.
+            Funkcja <span class="italic">innerHTML</span> posłużyła do aktualizacji obliczonych wartości (wysokości maksymalnej, zasięgu i czasu spadku) po zmianie wartości początkowych animacji.  
+            Artybut <span class="italic">onClick</span> pozwolił obsłużyć między innymi naciśnięcie przycisku startu animacji lub posługiwanie się nawigacją.
+            <span class="italic">addEventListener</span> natychmiastowo obrazuje na animacji zmiany początkowych wartości. 
+            Dzięki zmianie własności styli <span class="italic">style.display - none i block</span> można wybrać typ rzutu o którym będą wyświetlane informacje.
+        </p>
+        <p>
+            Strona waliduje się poprawnie na stronie W3C zgodnie z standardem HTML5 i CSS oraz wyświetlaja się poprawnie w przeglądarkach: Mozilla Firefox, Google Chrome, Microsoft Edge, Opera. 
+        </p>
+    </main>
+
+    <footer style="position: absolute; bottom: 0; width: 98%; padding: 10px 1%;">
+        Dokumentacja projekt z przedmiotu Techniki Internetowe - Wiktoria Szewczyk
+        <button onclick="window.location.href='index.html';">Projekt</button>
+    </footer>
+</body>
+</html>

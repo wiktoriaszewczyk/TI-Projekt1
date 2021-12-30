@@ -113,7 +113,7 @@ function drawVector(){
     
     c.arc(xToCanvas(x0),yToCanvas(y0), l/2, 2*Math.PI - alfa, 0);
     c.moveTo(fromx, fromy);
-    c.lineTo(fromx + lx, fromy);
+    c.lineTo(fromx + l - 10, fromy);
 
     c.stroke();
 }

@@ -16,7 +16,7 @@ var gap = 30;
 var axisX = gap;
 var axisY = canvasHeight - gap;
 
-// parametry poczatkowe
+// initial parameters
 var t0 = 0;
 var x0 = 50;
 var y0 = 100;
@@ -25,7 +25,7 @@ var alfa = 45 * (Math.PI/180.0);
 var dx0 = v0 * Math.cos(alfa);
 var dy0 = v0 * Math.sin(alfa);
 
-// parametry zalezne od czasu
+// time dependent parameters
 var x;
 var y;
 var dx;
@@ -120,7 +120,7 @@ function drawVector(){
 
 function clearCanvas(){
     c.clearRect(0,0,canvasWidth,canvasHeight);
-    // rysowanie osi
+    // drawing axes
     c.beginPath();
     c.strokeStyle = "#AAA";
     for(var i=50; i < (canvasWidth - 50); i+=50){
@@ -250,7 +250,7 @@ function changeData(){
     tk = hmax_xk_tk();
 }
 
-// zmiana danych po wpisaniu w arkusz
+// update data after change in form
 var animationData = document.getElementsByClassName("animationData");
 for(var i=0; i<animationData.length; i++){
     animationData[i].addEventListener("change",
@@ -260,7 +260,7 @@ for(var i=0; i<animationData.length; i++){
     });
 }
 
-// funkcja animująca rzut
+//////////////////////////////////////////////
 function animate(){
     if(animationStart == 1)
         requestAnimationFrame(animate);
@@ -278,12 +278,11 @@ function animate(){
 
     console.log("t = "+t+" x = "+x+" y = "+y);
 
-    if(y <= 0 && Math.round(t) == Math.round(tk) )    // lepszy warunek t == tk;
+    if(y <= 0 && Math.round(t) == Math.round(tk) )
         animationStart = 0;
-
 }
 
-// obsługa przycisków
+// buttons onclick functions
 function startAnimation(){
     setData();
     var time = new Date();
@@ -316,11 +315,6 @@ function showVectorFun(){
     }
     clearCanvas();
 }
-
-
-// wywolania
-setData();
-clearCanvas();
 
 // sticky nav
 var nav = document.getElementsByTagName("nav");
@@ -391,3 +385,6 @@ function selectThrow(n){
             break;
     }
 }
+
+setData();
+clearCanvas();
